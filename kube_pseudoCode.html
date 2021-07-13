@@ -1,1 +1,42 @@
-
+<!DOCTYPE html>
+<html lang = "en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Color Search!</title>
+        <!-- Bootstrap is used to make game look nicer -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="jumbotron">
+            <div class = "container">
+                <h1 class = "title">Color Search</h1>
+                <h2 class = "directions">Your job is to find the square that is out of place from the rest. As you progress, the more squares you find, the more squares there are on the board. Try and get the highest score you can!<br></p>
+                <small>Click start to begin...</small>
+            </div>
+            <div class="StartButton">
+                <button type="button" class="btn btn-outline-warning" id="start-button" >Start</button>
+            </div>
+        </div>
+        <div class="container px-4">
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        Timer
+                        <div id= "progressBar" ></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- actual score -->
+                    <div class="p-3 border bg-light">Score</div>
+                </div>
+                
+            </div>
+        </div> 
+        <div id="box" class="size2" style="width: 500px; height: 500px; background-color: cadetblue; border-radius: 20px;">
+            <!-- spans are the colored blocks within the div that the player can click -->
+            <span></span>
+        </div>
+        <script src="game.js"></script>
+    </body>
+</html>

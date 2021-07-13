@@ -8,6 +8,8 @@
 
 .StartButton {text-align: center; font-size: 25px; font-display: black}
 
+.size2 {margin-left: auto; margin-right: auto;}
+
 #box.size {
     width: 50%;
     height: 50%;

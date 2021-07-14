@@ -5,9 +5,10 @@
         <title>Color Search!</title>
         <!-- Bootstrap is used to make game look nicer -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styleForKube.css">
     </head>
     <body>
+        <!-- Sets up the webpage for the game -->
         <div class="jumbotron">
             <div class = "container">
                 <h1 class = "title">Color Search</h1>
@@ -30,13 +31,39 @@
                     <!-- actual score -->
                     <div class="p-3 border bg-light">Score</div>
                 </div>
-                
             </div>
         </div> 
-        <div id="box" class="size2" style="width: 500px; height: 500px; background-color: cadetblue; border-radius: 20px;">
-            <!-- spans are the colored blocks within the div that the player can click -->
-            <span></span>
-        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
+                        <!-- spans are the colored blocks within the div that the player can click -->
+                        <span></span>
+                    </div>
+                </div>  
+                <div class="col">  
+                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
+                        <!-- spans are the colored blocks within the div that the player can click -->
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
+                        <!-- spans are the colored blocks within the div that the player can click -->
+                        <span></span>
+                    </div>
+                </div>  
+                <div class="col">  
+                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
+                        <!-- spans are the colored blocks within the div that the player can click -->
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>   
         <script src="game.js"></script>
     </body>
 </html>

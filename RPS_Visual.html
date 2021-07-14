@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+​
+<head>
+  <meta charset="UTF-8">
+  <title>Rock, Paper, Sissors, Lizard, Spock</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+    .gray {
+      background-color:lightgray;
+    }
+    .red {
+      background-color:rgb(242, 176, 161);
+    }
+    .green {
+      background-color:rgb(143, 174, 172);
+    }
+    .blue {
+      background-color:lightblue;
+    }
+  </style>
+</head>
+​
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center gray">
+        <p id="directions-text">Choose: 
+          <select id="choice" name="choice">
+              <option value="rock">Rock</option>
+              <option value="paper">Paper</option>
+              <option value="scissors">Scissors</option>
+              <option value="lizard">Lizard</option>
+              <option value="Spock">Spock</option>
+          </select>
+          <button class="btn-primary">Play!</button>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm text-center red">
+        <!-- This is only displayed after a player wins a round. Otherwise it is invisible. It shows your choice and the computer's choice. -->
+        <p id="roundChoices" style="display: none;">You chose <strong id="userChoice"></strong>, and the computer chose <strong id="computerChoice"></strong>.</p>
+      </div>
+      <div class="col-sm text-center green">
+        <!-- This is only displayed after a round is played and the player won or lost.  Otherwise it is invisible. It explains WHY the player won or lost. -->
+        <p id="roundResults" style="display: none;">You <strong id="winLose"></strong> because <strong id="winner"></strong> <strong id="verb"></strong> <strong id="loser"></strong>.</p>
+        <!-- This is only displayed of the player ties the computer. Otherwise it is invisible. -->
+        <p id="youTied" style="display: none;">You tied.</p>
+      </div>
+      <!-- This column reports the wins, losses, and ties -->
+      <div class="col-sm blue">
+        <div class="row">
+          <div class="col text-center">
+            <p>Wins: <span id="wins"></span></p>
+          </div>
+          <div class="col text-center">
+            <p>Losses: <span id="losses"></span></p>
+          </div>
+          <div class="col text-center">
+            <p>Ties: <span id="ties"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+​
+  <script type="text/javascript">
+    // Create an array that lists out all of the options (Rock, Paper, Scissors, Lizard, Spock).
+    var choices = ["rock", "paper", "scissors", "lizard", "Spock"];
+    //fill an array with all possible winning combination objects according to the rules of the game
+    var winningCombinations = [
+      {winner: choices[0], loser: choices[2], verb: "smashes"}, 
+      {winner: choices[0], loser: choices[3], verb: "crushes"},
+      {winner: choices[1], loser: choices[0], verb: "covers"},
+      {winner: choices[1], loser: choices[4], verb: "disproves"},
+      {winner: choices[2], loser: choices[1], verb: "cuts"},
+      {winner: choices[2], loser: choices[3], verb: "decapitates"},
+      {winner: choices[3], loser: choices[4], verb: "poisons"},
+      {winner: choices[3], loser: choices[1], verb: "eats"},
+      {winner: choices[4], loser: choices[0], verb: "vaporizes"},
+      {winner: choices[4], loser: choices[2], verb: "smashes"}
+    ]
+    // create variables to hold the number of wins, losses, and ties. They start at 0.
+    var wins = 0;
+    var losses = 0;
+    var ties = 0;
+    //use the DOM to refer to the button
+    var button = document.getElementsByTagName("BUTTON")[0];
+    //use the DOM to refer to the select tag
+    var selection = document.getElementsByTagName("SELECT")[0];
+    // Run the "score" function whenever the user clicks the button.
+    button.addEventListener("click", score, false);
+    //a function to determine who won the round and report the results. It runs when the player clicks on the button.
+    function score(event) {
+      //create a variable to describe the whether the player won or lost THIS round (current state). At this point, we have not determined if the player won so we make it "lost".
+      var playerState = "lost";
+      //makes the element that reports the player's choice and the computer's choice visible
+      document.getElementById("roundChoices").style.setProperty("display", "block");
+      // Determines what the player selected from the drop down menu.
+      var userChoice = selection.value;
+      // Randomly choose a choice from the options array. This is the computer's choice.
+      var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+      //If this round is a tie (the player makes the same choice as the computer)
+      if(userChoice == computerChoice) {
+        //hide the element that reports a win/lose result
+        document.getElementById("roundResults").style.setProperty("display", "none");
+        //show the element that reports a tie
+        document.getElementById("youTied").style.setProperty("display", "block");
+        //increment the number of ties
+        ties++;
+      //If this is not a tie
+      } else {
+        //show the element that reports a win/lose result
+        document.getElementById("roundResults").style.setProperty("display", "block");
+        //hide the element that reports a tie
+        document.getElementById("youTied").style.setProperty("display", "none");
+        //check all the winning combinations to see if there is one where the winner matches the player's choice AND the loser matches the computers choice. Note that if there IS such a combination, "winningCombo" becomes an ARRAY containing exactly one winning combination.  If there is NO such combination, it means that the computer won and winningCombo will be an empty array.
+        var winningCombo = winningCombinations.filter(winningCombination => winningCombination.winner == userChoice).filter(winningCombination => winningCombination.loser == computerChoice);
+        //if the computer won
+        if(winningCombo.length == 0) {
+          //find the ONE object that corresponds to the winning combination described by the player's choice and the computer's choice. We put the [0] index at the end to return the only winning combination object we expect from this array
+          winningCombo = winningCombinations.filter(winningCombination => winningCombination.winner == computerChoice).filter(winningCombination => winningCombination.loser == userChoice)[0];
+          //increment the number of losses.
+          losses++;
+        } else {
+          //convert the winning combination from an array containing a single winning object to that object.
+          winningCombo = winningCombo[0];
+          //change the state of the player to "won"
+          playerState = "won";
+          //increment the number of wins
+          wins++;
+        }
+        // Report who won and why
+        document.getElementById("winLose").textContent = playerState;
+        document.getElementById("winner").textContent = winningCombo.winner;
+        document.getElementById("verb").textContent = winningCombo.verb;
+        document.getElementById("loser").textContent = winningCombo.loser;
+      }
+      // Display the user and computer guesses, and wins/losses/ties.
+      document.getElementById("userChoice").textContent = userChoice;
+      document.getElementById("computerChoice").textContent = computerChoice;
+      document.getElementById("wins").textContent = wins;
+      document.getElementById("losses").textContent = losses;
+      document.getElementById("ties").textContent = ties;
+    };
+  </script>
+​
+</body>
+​
+</html>

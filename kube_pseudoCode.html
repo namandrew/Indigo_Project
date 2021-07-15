@@ -13,7 +13,7 @@
             <div class = "container">
                 <h1 class = "title">Color Search</h1>
                 <h2 class = "directions">Your job is to find the square that is out of place from the rest. As you progress, the more squares you find, the more squares there are on the board. Try and get the highest score you can!<br></p>
-                <small>Click start to begin...</small>
+                <small id = "start-instructions">Click start to begin...</small>
             </div>
             <div class="StartButton">
                 <button type="button" class="btn btn-outline-warning" id="start-button" >Start</button>
@@ -29,41 +29,14 @@
                 </div>
                 <div class="col">
                     <!-- actual score -->
-                    <div class="p-3 border bg-light">Score</div>
+                    <div class="p-3 border bg-light">
+                        Score
+                    </div>
                 </div>
             </div>
         </div> 
         <br>
-        <div class="container">
-            <div class="row">
-                <div class=col>
-                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
-                        <!-- spans are the colored blocks within the div that the player can click -->
-                        <span></span>
-                    </div>
-                </div>
-                <div class=col>
-                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
-                        <!-- spans are the colored blocks within the div that the player can click -->
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class=col>
-                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
-                        <!-- spans are the colored blocks within the div that the player can click -->
-                        <span></span>
-                    </div>
-                </div>
-                <div class=col>
-                    <div id="box" class="size2" style="width: 100px; height: 100px; border-radius: 20px;">
-                        <!-- spans are the colored blocks within the div that the player can click -->
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>   
+        <div id="gridContainer" class="container"></div>   
         <script src="game.js"></script>
     </body>
 </html>

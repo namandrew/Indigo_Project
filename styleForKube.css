@@ -6,45 +6,6 @@
 
 .directions {font-size: 30px;}
 
-.StartButton {text-align: center; font-size: 25px; font-display: black}
+.StartButton {text-align: center; font-size: 25px; font-display: black;}
 
 .size2 {margin-left: auto; margin-right: auto;}
-
-#box.size {
-    width: 50%;
-    height: 50%;
-}
-
-#box.size2 {
-    width: 33.3%;
-    height: 33.3%;
-}
-
-#box.size3 {
-    width: 25%;
-    height: 25%;
-}
-
-#box.size4 {
-    width: 20%;
-    height: 20%; 
-}
-#box.size5 {
-    width: 16.67%;
-    height: 16.67%;
-}
-
-#box.size6 {
-    width: 14.2%;
-    height: 14.2%;
-}
-
-#box.size7 {
-    width: 12.5%;
-    height: 12.5%;
-}
-
-#box.size8 {
-    width: 11.1%;
-    height: 11.1%;
-}

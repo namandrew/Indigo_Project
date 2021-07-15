@@ -1,15 +1,16 @@
 var roundNum = 0;
 var container = document.getElementById("gridContainer");
 var time = 60;
-var numRight = 0;
+var score = 0;
+var scoreDisplay = document.getElementById("scoreBar");
 var offBox;
 // function needs to work every three rounds 
-function blockNum(roundNum) {
-    if (roundNum == 1) {return 4;}
+function side(roundNum) {
+    if (roundNum == 1) {return 2;}
     else {
-        if (roundNum % 3 == 2) {return Math.pow(roundNum + 1, 2);} 
-        else if (roundNum % 3 == 0) {return Math.pow(roundNum, 2);}
-        else if (roundNum% 3 == 1) { return Math.pow(roundNum - 1, 2);}
+        if (roundNum % 3 == 2) {return roundNum+1;} 
+        else if (roundNum % 3 == 0) {return roundNum;}
+        else if (roundNum% 3 == 1) { return roundNum-1;}
     }
 }
 function randomColor() {
@@ -18,6 +19,9 @@ function randomColor() {
     let blue = Math.floor(Math.random() * 256);
     return {red: red, green: green, blue: blue};
 }
+
+document.getElementsByClassName("jumbotron")[0].style.setProperty("background-color", randomColor());
+
 document.getElementById("start-button").addEventListener("click", function () {
     var downloadTimer = setInterval(function(){
         if(time <= 0){ 
@@ -33,14 +37,15 @@ document.getElementById("start-button").addEventListener("click", function () {
 })
 function createBoxes() {
     roundNum++;
-    for (var r = 0; r < roundNum+1; r++) {
+    var sideLength = side(roundNum);
+    for (var r = 0; r < sideLength; r++) {
         let row = document.createElement("div");
         row.className = "row";
-        for(var c = 0; c < roundNum+1; c++) {
+        for(var c = 0; c < sideLength; c++) {
             let col = document.createElement("div");
-            col.className = "col";
+            col.className = "col p-1";
             let colorDiv = document.createElement("div");
-            let boxStyle = "width: 100%; height: " + 700 / (roundNum+1) + "px; border-radius: 10px;";
+            let boxStyle = "width: 100%; height: " + 700 / (sideLength) + "px; border-radius: 15px;";
             colorDiv.style = boxStyle;
             colorDiv.addEventListener("click", checker, false);
             colorDiv.className = "colorDiv";
@@ -58,13 +63,13 @@ function createBoxes() {
     let offGreen = green + 10;
     let offBlue = blue + 10;
     if (red > 245) {
-        offRed -= 20
+        offRed -= 40;
     }
     if (blue > 245) {
-        offBlue -= 20
+        offBlue -= 40;
     }
     if (green > 245) {
-        offGreen -= 20
+        offGreen -= 40;
     }
     let offColor = "rgb(" + offRed + ", " + offGreen + ", " + offBlue + ")"
     let boxes = document.getElementsByClassName("colorDiv");
@@ -74,10 +79,11 @@ function createBoxes() {
     }
     offBox.style.setProperty("background-color", offColor);
 }
-
+// document get element id, text content, score
 function checker() {
     if (this == offBox) {
-        numRight++;
+        score++;
+        // var score = document.getElementById("scoreNumber") 
         let rows = container.getElementsByClassName("row");
         for (var r = rows.length-1; r >= 0; r--) {
             container.removeChild(rows[r]);

@@ -1,11 +1,7 @@
-.jumbotron {text-align: center; background-color: rgb(136, 136, 226);}
+.jumbotron {text-align: center;}
 
-.body {background-color: rgb(15, 127, 155);}
+.title {font-weight: bold; font-size: 100px; display: block; font-family: "Times New Roman", Times, serif;}
 
-.title {font-weight: bold; font-size: 100px; display: block; font-family: Tahoma, Verdana, sans-serif;}
-
-.directions {font-size: 30px;}
+.directions {font-size: 30px; font-family: "Times New Roman", Times, serif;}
 
 .StartButton {text-align: center; font-size: 25px; font-display: black;}
-
-.size2 {margin-left: auto; margin-right: auto;}

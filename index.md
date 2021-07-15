@@ -1,37 +1,55 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html lang = "en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Color Search!</title>
+        <!-- Bootstrap is used to make game look nicer -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styleForKube.css">
+    </head>
+    <body>
+        <!-- Sets up the webpage for the game -->
+        <div class="jumbotron">
+            <div class = "container">
+                <h1 class = "title">Color Search</h1>
+                <h2 class = "directions">Your job is to find the square that is out of place from the rest. As you progress, the more squares you find, the more squares there are on the board. Try and get the highest score you can!<br></p>
+                <small id = "start-instructions">Click start to begin...</small>
+            </div>
+            <div class="StartButton">
+                <button type="button" class="btn btn-outline-warning" id="start-button" >Start</button>
+            </div>
+        </div>
+        <div class="container px-4">
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        Timer
+                        <div id= "progressBar" style="float: right;"></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- actual score -->
+                    <div class="p-3 border bg-light">
+                        Score
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <br>
+        <div id="gridContainer" class="container"></div>   
+        <script src="game.js"></script>
+    </body>
+</html>
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
 
-You can use the [editor on GitHub](https://github.com/namandrew/Indigo_Project/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/namandrew/Indigo_Project/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

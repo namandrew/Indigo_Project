@@ -83,7 +83,7 @@ function createBoxes() {
 function checker() {
     if (this == offBox) {
         score++;
-        // var score = document.getElementById("scoreNumber") 
+        scoreDisplay.textContent = score;
         let rows = container.getElementsByClassName("row");
         for (var r = rows.length-1; r >= 0; r--) {
             container.removeChild(rows[r]);

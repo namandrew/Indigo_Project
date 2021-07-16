@@ -2,7 +2,6 @@ var roundNum = 0;
 var container = document.getElementById("gridContainer");
 var time = 60;
 var score = 0;
-var highScore = 0;
 var scoreDisplay = document.getElementById("scoreBar");
 var offBox;
 // function needs to work every three rounds 
@@ -42,9 +41,15 @@ function initialize() {
                 document.getElementById("start-button").style.visibility = "initial";
                 document.getElementById("start-instructions").textContent = "Click to begin again...";
                 document.getElementById("title").textContent = "Time's Up!";
-                var highestScore = 0;
-                if (score > highScore) {highestScore=score;}
-                document.getElementById("directions").textContent = "Score: " + score;
+                if (score <= 5) {
+                    document.getElementById("directions").textContent = "Score: " + score + " – you can do better!";
+                } else if (score <= 10) {
+                    document.getElementById("directions").textContent = "Score: " + score + " – not bad!";
+                } else if (score <= 15) {
+                    document.getElementById("directions").textContent = "Score: " + score + " – wow!";
+                } else if (score > 15) {
+                    document.getElementById("directions").textContent = "Score: " + score + " – SUPERHUMAN!";
+                }
                 document.getElementById("start-button").addEventListener("click", function () {location.reload()});
             }
             var timerbox = document.getElementById("progressBar");

@@ -39,20 +39,20 @@ function initialize() {
             if (time <= 0){ 
                 clearInterval(downloadTimer);
                 clearContent("fullContainer");
-                document.getElementById("start-button").style.visibility = "visible";
+                document.getElementById("start-button").style.visibility = "initial";
+                document.getElementById("start-instructions").textContent = "Click to begin again...";
                 document.getElementById("title").textContent = "Time's Up!";
                 var highestScore = 0;
                 if (score > highScore) {highestScore=score;}
-                document.getElementById("directions").textContent = "Score: " + score + ", High Score: " + highestScore;
-                document.getElementById("start-instructions").style.visibility = "visible";
-                document.getElementById("start-instructions").textContent = "Click to begin again...";
-                initialize();
+                document.getElementById("directions").textContent = "Score: " + score;
+                document.getElementById("start-button").addEventListener("click", function () {location.reload()});
             }
             var timerbox = document.getElementById("progressBar");
             timerbox.textContent = time;
             time -= 1;
         }, 1000);
         document.getElementById("start-button").style.visibility = "hidden";
+        document.getElementById("start-button").textContent = "Try Again";
         document.getElementById("start-instructions").style.visibility = "hidden";
         createBoxes();
     })
@@ -85,13 +85,13 @@ function createBoxes() {
     let offGreen = green + 10;
     let offBlue = blue + 10;
     if (red > 245) {
-        offRed -= 40;
+        offRed -= 20;
     }
     if (blue > 245) {
-        offBlue -= 40;
+        offBlue -= 20;
     }
     if (green > 245) {
-        offGreen -= 40;
+        offGreen -= 20;
     }
     let offColor = "rgb(" + offRed + ", " + offGreen + ", " + offBlue + ")"
     let boxes = document.getElementsByClassName("colorDiv");

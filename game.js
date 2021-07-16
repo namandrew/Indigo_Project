@@ -2,6 +2,7 @@ var roundNum = 0;
 var container = document.getElementById("gridContainer");
 var time = 60;
 var score = 0;
+var highScore = 0;
 var scoreDisplay = document.getElementById("scoreBar");
 var offBox;
 // function needs to work every three rounds 
@@ -13,28 +14,49 @@ function side(roundNum) {
         else if (roundNum% 3 == 1) { return roundNum-1;}
     }
 }
-function randomColor() {
+function randomColorArray() {
     let red = Math.floor(Math.random() * 256);
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
     return {red: red, green: green, blue: blue};
 }
+function randomColorTag() {
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+    return "rgb(" + red + ", " + green + ", " + blue + ")";
+}
+function clearContent(elementID) {
+    document.getElementById(elementID).innerHTML = "";
+}
 
-document.getElementsByClassName("jumbotron")[0].style.setProperty("background-color", randomColor());
+document.getElementsByClassName("jumbotron")[0].style.setProperty("background-color", randomColorTag());
+initialize();
 
-document.getElementById("start-button").addEventListener("click", function () {
-    var downloadTimer = setInterval(function(){
-        if(time <= 0){ 
-          clearInterval(downloadTimer);
-        }
-        var timerbox = document.getElementById("progressBar")
-        timerbox.textContent = time
-        time -= 1;
-    }, 1000);
-    document.getElementById("start-button").style.visibility = "hidden";
-    document.getElementById("start-instructions").style.visibility = "hidden";
-    createBoxes();
-})
+function initialize() {
+    document.getElementById("start-button").addEventListener("click", function () {
+        var downloadTimer = setInterval(function(){
+            if (time <= 0){ 
+                clearInterval(downloadTimer);
+                clearContent("fullContainer");
+                document.getElementById("start-button").style.visibility = "visible";
+                document.getElementById("title").textContent = "Time's Up!";
+                var highestScore = 0;
+                if (score > highScore) {highestScore=score;}
+                document.getElementById("directions").textContent = "Score: " + score + ", High Score: " + highestScore;
+                document.getElementById("start-instructions").style.visibility = "visible";
+                document.getElementById("start-instructions").textContent = "Click to begin again...";
+                initialize();
+            }
+            var timerbox = document.getElementById("progressBar");
+            timerbox.textContent = time;
+            time -= 1;
+        }, 1000);
+        document.getElementById("start-button").style.visibility = "hidden";
+        document.getElementById("start-instructions").style.visibility = "hidden";
+        createBoxes();
+    })
+}
 function createBoxes() {
     roundNum++;
     var sideLength = side(roundNum);
@@ -54,7 +76,7 @@ function createBoxes() {
         }
         container.appendChild(row);
     }
-    let color = randomColor();
+    let color = randomColorArray();
     let red = color.red;
     let green = color.green;
     let blue = color.blue;

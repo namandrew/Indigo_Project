@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang = "en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Color Search!</title>
+        <!-- Bootstrap is used to make game look nicer -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styleForKube.css">
+    </head>
+    <body class="body">
+        <!-- Sets up the webpage for the game -->
+        <div class="jumbotron">
+            <div class = "container">
+                <h1 id = "title">Color Search</h1>
+                <h2 id = "directions">Find the off-colored tile and CLICK<br></p>
+                <small id = "start-instructions" style = "visibility: visible">Click start to begin...</small>
+            </div>
+            <div class="StartButton">
+                <button type="button" class="btn btn-outline-warning" id="start-button">Start</button>
+            </div>
+        </div>
+        <div id="fullContainer" class="container">
+            <!-- contains timer and score -->
+            <div class="container px-4">
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="p-3 border bg-light">
+                            Timer
+                            <div id= "progressBar" style="float: right;"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">
+                            Score
+                            <div id= "scoreBar" style="float: right;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <br>
+            <!-- contains the colored boxes -->
+            <div id="gridContainer" class="container"></div>  
+        </div> 
+        <script src="game.js"></script>
+    </body>
+</html>

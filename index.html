@@ -1,46 +1,55 @@
 <!DOCTYPE html>
-<html lang = "en-us">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Color Search!</title>
-        <!-- Bootstrap is used to make game look nicer -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="styleForKube.css">
+        <title>Sensory Game!</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="styleForMain.css">
     </head>
-    <body class="body">
-        <!-- Sets up the webpage for the game -->
+    <body>
         <div class="jumbotron">
-            <div class = "container">
-                <h1 id = "title">Color Search</h1>
-                <h2 id = "directions">Find the off-colored tile and CLICK<br></p>
-                <small id = "start-instructions" style = "visibility: visible">Click start to begin...</small>
-            </div>
-            <div class="StartButton">
-                <button type="button" class="btn btn-outline-warning" id="start-button">Start</button>
-            </div>
+            <div class ="container">
+                <h1 id="mainTitle">
+                    Sensory Mini-Game! 
+                </h1>
+                <p id="mainDirections"> 
+                    On this website, you will find the Color Search, a game that tests your eyes and how well you can differentiate colors. Have Fun!
+                </p>
+                <div class="StartButton">
+                    <a href="index.html" class="btn btn-outline-warning" id="start-button">Play Color Search!</a>
+                </div>
+                <br>
+            </div>   
         </div>
-        <div id="fullContainer" class="container">
-            <!-- contains timer and score -->
-            <div class="container px-4">
-                <div class="row gx-5">
-                    <div class="col">
-                        <div class="p-3 border bg-light">
-                            Timer
-                            <div id= "progressBar" style="float: right;"></div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="p-3 border bg-light">
-                            Score
-                            <div id= "scoreBar" style="float: right;"></div>
-                        </div>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="slideBox">
+                <div class="carousel-item active">
+                    <img src="assets/ColorSearchOne.png" class="d-block w-100 slideImg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="labelText">Level 1:<h5>
+                        <p class="labelText">Fairly simple, right?</p>
+                    </div> 
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/ColorSearchTwo.png" class="d-block w-100 slideImg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="labelText">Not so simple . . .<h5>
+                        <p class="labelText">Think you can get this far? Play the game to find out!</p>
                     </div>
                 </div>
-            </div> 
-            <br>
-            <!-- contains the colored boxes -->
-            <div id="gridContainer" class="container"></div>  
-        </div> 
-        <script src="game.js"></script>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
     </body>
 </html>

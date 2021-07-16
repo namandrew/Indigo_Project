@@ -36,7 +36,7 @@ initialize();
 function initialize() {
     document.getElementById("start-button").addEventListener("click", function () {
         var downloadTimer = setInterval(function(){
-            if(time <= 0){ 
+            if (time <= 0){ 
                 clearInterval(downloadTimer);
                 clearContent("fullContainer");
                 document.getElementById("start-button").style.visibility = "visible";
